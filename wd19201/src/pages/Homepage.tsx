@@ -18,7 +18,7 @@ function Homepage() {
     return (
         <div>
             <h1>Đây là trang chủ</h1>
-            <table>
+            <table className="table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -27,6 +27,7 @@ function Homepage() {
                         <th>Description</th>
                         <th>Image</th>
                         <th>Brand</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@ function Homepage() {
                                 <img src={product.image} alt="" />
                             </td>
                             <td>{product.brand}</td>
+                            <td><a href={'/products/'+product.id}>Chi tiết</a></td>
                         </tr>
                     )
                     )}
