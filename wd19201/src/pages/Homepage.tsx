@@ -16,7 +16,7 @@ function Homepage() {
         getProducts();
     }, []);
     return (
-        <div>
+        <div className="container">
             <h1>Đây là trang chủ</h1>
             <table className="table">
                 <thead>
