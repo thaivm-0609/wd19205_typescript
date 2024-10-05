@@ -41,5 +41,18 @@
       "id": 5
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "thaivm2@fpt.edu.vn",
+      "password": "$2a$10$1nYdyzaktvdo0r76rC8T8Owr8c/16bUcxtEPPKUt0R/50YLhWr5vG",
+      "name": "thaivm2",
+      "id": 1
+    },
+    {
+      "email": "thaivm3@fpt.edu.vn",
+      "password": "$2a$10$MfqU5Mwqni3yMvHdfvByyuF2cA2C6hoSPkRITKwh0C.x2X4.HZ9kW",
+      "name": "thaivm3",
+      "id": 2
+    }
+  ]
 }

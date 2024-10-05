@@ -3,6 +3,8 @@ import Homepage from "./pages/Homepage";
 import Detail from "./pages/Detail";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 //khai bao router
 const routeConfig = [
@@ -17,6 +19,14 @@ const routeConfig = [
   { //router thêm mới
     path: "/create",
     element: <Create />
+  },
+  { //router đăng ký
+    path: "/register",
+    element: <Register />
+  },
+  { //router đăng nhập
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/admin", 
