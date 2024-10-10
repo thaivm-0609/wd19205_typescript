@@ -20,7 +20,7 @@ function Register() {
     const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
         try { 
             await axios.post("http://localhost:3000/signup", data);
-            navigate("/");
+            navigate("/login");
         } catch (error) {
             
         }

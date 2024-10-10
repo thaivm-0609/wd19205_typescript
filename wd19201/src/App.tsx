@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 
 //khai bao router
 const routeConfig = [
@@ -30,6 +31,7 @@ const routeConfig = [
   },
   {
     path: "/admin", 
+    element: <Admin />,
     children: [  //khai báo router con
       { path: "" },
       { path: "products" },

@@ -53,6 +53,12 @@
       "password": "$2a$10$MfqU5Mwqni3yMvHdfvByyuF2cA2C6hoSPkRITKwh0C.x2X4.HZ9kW",
       "name": "thaivm3",
       "id": 2
+    },
+    {
+      "email": "thaivm333@fpt.edu.vn",
+      "password": "$2a$10$GN6v053/4iCPuZXESXPY8eJZDSYCp1YhyEQzh5HLCeSROoAyOWMOy",
+      "name": "thaivm333",
+      "id": 3
     }
   ]
 }

@@ -1,20 +1,26 @@
 import { useForm, SubmitHandler } from "react-hook-form"; //làm việc vs form
 import axios from "axios"; //call API
-import { ProductInput } from "../types/Product"; 
 import { useNavigate } from "react-router-dom"; //điều hướng ng dùng
+
+//khai báo type input cho form đăng ký
+type LoginInput = {
+    email: string,
+    password: string,
+}
 
 function Login() {
     const { 
         register,
         handleSubmit,
         formState: {errors}
-    } = useForm<ProductInput>();
+    } = useForm<LoginInput>();
     const navigate = useNavigate(); //điều hướng người dùng
     
-    const onSubmit: SubmitHandler<ProductInput> = async (data) => {
+    const onSubmit: SubmitHandler<LoginInput> = async (data) => {
         try { 
-            await axios.post("http://localhost:3000/products", data);
-            navigate("/");
+            const response = await axios.post("http://localhost:3000/signin", data); //call api đăng nhập
+            localStorage.setItem('token', response.data.accessToken); //lưu token vào trong localStorage
+            navigate('/admin');
         } catch (error) {
             
         }
@@ -22,79 +28,41 @@ function Login() {
 
     return (
         <div className="container">
-            <h1 className="text-center">Trang thêm mới</h1>
+            <h1 className="text-center">Đăng nhập</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="" className="form-label">Name</label>
+                    <label htmlFor="" className="form-label">Email</label>
                     <input 
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="name"
-                        { ...register("name", {
-                            required: "Name is required"
+                        id="email"
+                        { ...register("email", {
+                            required: "Email is required",
+                            pattern: {
+                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                message: 'Email không đúng định dạng'
+                            }
                         })}
                     />
-                    { errors?.name && (
-                        <p className="text-danger">{ errors?.name?.message }</p>
+                    { errors?.email && (
+                        <p className="text-danger">{ errors?.email?.message }</p>
                     )}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="" className="form-label">Price</label>
+                    <label htmlFor="" className="form-label">Password</label>
                     <input 
-                        type="number"
+                        type="password"
                         className="form-control"
-                        id="price"
-                        { ...register("price", {
-                            required: "Price is required"
+                        id="password"
+                        { ...register("password", {
+                            required: "Password is required"
                         })}
                     />
-                    { errors?.price && (
-                        <p className="text-danger">{ errors?.price?.message }</p>
+                    { errors?.password && (
+                        <p className="text-danger">{ errors?.password?.message }</p>
                     )}
                 </div>
-                <div className="form-group">
-                    <label htmlFor="" className="form-label">Image</label>
-                    <input 
-                        type="text"
-                        className="form-control"
-                        id="image"
-                        { ...register("image", {
-                            required: "Image is required"
-                        })}
-                    />
-                    { errors?.image && (
-                        <p className="text-danger">{ errors?.image?.message }</p>
-                    )}
-                </div>
-                <div className="form-group">
-                    <label htmlFor="" className="form-label">Description</label>
-                    <input 
-                        type="text"
-                        className="form-control"
-                        id="description"
-                        { ...register("description", {
-                            required: "Description is required"
-                        })}
-                    />
-                    { errors?.description && (
-                        <p className="text-danger">{ errors?.description?.message }</p>
-                    )}
-                </div>
-                <div className="form-group">
-                    <label htmlFor="" className="form-label">Brand</label>
-                    <input 
-                        type="text"
-                        className="form-control"
-                        id="brand"
-                        { ...register("brand", {
-                            required: "Brand is required"
-                        })}
-                    />
-                    { errors?.description && (
-                        <p className="text-danger">{ errors?.description?.message }</p>
-                    )}
-                </div>
-                <button type="submit" className="btn btn-success mt-2">Thêm mới</button>
+                <button type="submit" className="btn btn-success mt-2">Đăng nhập</button>
             </form>
         </div>
     )
