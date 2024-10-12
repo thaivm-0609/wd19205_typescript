@@ -6,6 +6,7 @@ import Create from "./pages/Create";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import Edit from "./pages/Edit";
 
 //khai bao router
 const routeConfig = [
@@ -20,6 +21,10 @@ const routeConfig = [
   { //router thêm mới
     path: "/create",
     element: <Create />
+  },
+  { //router edit
+    path: "products/edit/:id",
+    element: <Edit />
   },
   { //router đăng ký
     path: "/register",
